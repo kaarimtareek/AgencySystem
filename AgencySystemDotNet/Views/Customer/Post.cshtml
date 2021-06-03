@@ -1,0 +1,149 @@
+﻿@model PressAgencyApp.ViewModels.Post.PostViewModelR
+
+@{
+    ViewBag.Title = "Post";
+}
+
+<h2>Post</h2>
+
+<div>
+    <h4>PostViewModelR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EditorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img src="~/images/@Model.Photo" width="250px" height="250px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewersNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewersNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DislikesNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DislikesNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LikesNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LikesNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+
+    </dl>
+    <h2>Questions</h2>
+    <table class="table">
+        <tr>
+            <th>
+                <span> Customer Id </span>
+            </th>
+            <th>
+                <span> Customer Name</span>
+            </th>
+            <th>
+                <span> Question</span>
+            </th>
+
+        </tr>
+        @foreach (var item in Model.Questions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+
+               
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Like", "LikePost", new { id = Model.Id }) |
+    @Html.ActionLink("Dislike", "DislikePost", new { id = Model.Id }) |
+    @Html.ActionLink("Ask Question", "AskQuestion", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Posts")
+</p>

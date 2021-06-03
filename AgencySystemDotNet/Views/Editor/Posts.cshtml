@@ -1,0 +1,100 @@
+﻿@model IEnumerable<PressAgencyApp.ViewModels.Post.PostViewModelR>
+
+@{
+    ViewBag.Title = "Posts";
+}
+
+<h2>Posts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreatePost")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EditorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewersNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DislikesNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LikesNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                <img src="~/images/@item.Photo" width="50px" height="50px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViewersNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DislikesNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LikesNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditPost", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Post", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeletePost", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

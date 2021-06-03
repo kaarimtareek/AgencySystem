@@ -1,0 +1,57 @@
+﻿@model PressAgencyApp.ViewModels.PostQuestion.PostQuestionViewModelR
+
+@{
+    ViewBag.Title = "Question";
+}
+
+<h2>Question</h2>
+
+<div>
+    <h4>PostQuestionViewModelR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to Post", "Post",new { id= Model.PostId})
+</p>
