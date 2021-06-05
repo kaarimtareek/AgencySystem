@@ -23,5 +23,8 @@ namespace PressAgencyApp.Services
         int LikePost(int userId, int postId);
         User Login(string email, string password);
         User UpdateCustomer(CustomerViewModelU customerViewModelU);
+        int SavePost(int customerId, int postId);
+        List<Post> GetSavedPosts(int customerId);
     }
+
 }

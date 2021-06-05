@@ -142,6 +142,7 @@
     </table>
 </div>
 <p>
+    @Html.ActionLink("Save Post", "SavePost", new { id = Model.Id }) |
     @Html.ActionLink("Like", "LikePost", new { id = Model.Id }) |
     @Html.ActionLink("Dislike", "DislikePost", new { id = Model.Id }) |
     @Html.ActionLink("Ask Question", "AskQuestion", new { id = Model.Id }) |

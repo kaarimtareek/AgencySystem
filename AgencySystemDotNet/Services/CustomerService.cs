@@ -78,7 +78,6 @@ namespace PressAgencyApp.Services
             return uniqueFileName;
         }
 
-
         private bool IsEmailExist(string Email)
         {
             return context.Users.AsNoTracking().Any(x => x.Email == Email);
@@ -293,9 +292,9 @@ namespace PressAgencyApp.Services
 
         public List<Post> GetPosts(int? categoryId)
         {
-           if(!categoryId.HasValue)
-                return context.Posts.AsNoTracking().Where(x=>!x.IsDeleted && x.StatusId == CONSTANT_POST_STATUS.APPROVED).ToList();
-            return context.Posts.AsNoTracking().Where(x => x.CategoryId == categoryId.Value&& !x.IsDeleted && x.StatusId == CONSTANT_POST_STATUS.APPROVED).ToList();
+            if (!categoryId.HasValue)
+                return context.Posts.AsNoTracking().Where(x => !x.IsDeleted && x.StatusId == CONSTANT_POST_STATUS.APPROVED).ToList();
+            return context.Posts.AsNoTracking().Where(x => x.CategoryId == categoryId.Value && !x.IsDeleted && x.StatusId == CONSTANT_POST_STATUS.APPROVED).ToList();
         }
 
         public List<Post> GetEditorPosts(int editorId)
@@ -338,7 +337,39 @@ namespace PressAgencyApp.Services
 
         public User GetCustomer(int id)
         {
-           return context.Users.SingleOrDefault(x => x.Id == id && x.Role == CONSTANT_USER_ROLES.CUSTOMER && !x.IsDeleted);
+            return context.Users.SingleOrDefault(x => x.Id == id && x.Role == CONSTANT_USER_ROLES.CUSTOMER && !x.IsDeleted);
+        }
+
+        public int SavePost(int customerId, int postId)
+        {
+            if (!IsPostExist(postId))
+                throw new AppException(HttpStatusCode.NotFound, "Post not found");
+            var post = context.Posts.Single(x => x.Id == postId);
+
+            if (!IsCustomerExist(customerId))
+                throw new AppException(HttpStatusCode.NotFound, "Customer not found");
+
+            var postView = context.SavedPosts.SingleOrDefault(x => x.PostId == postId && x.CustomerId == customerId);
+            if (postView == null)
+            {
+                postView = new SavedPost
+                {
+                    PostId = postId,
+                    CustomerId = customerId,
+                };
+                context.SavedPosts.Add(postView);
+                context.SaveChanges();
+            }
+            return postView.PostId;
+        }
+        public List<Post>GetSavedPosts(int customerId)
+        {
+            if (!IsCustomerExist(customerId))
+                throw new AppException(HttpStatusCode.NotFound, "Customer not found");
+            var postsIds = context.SavedPosts.Where(x => x.CustomerId == customerId).Select(x => x.PostId).ToList();
+            var posts = context.Posts.Where(x => postsIds.Contains(x.Id)).ToList();
+            return posts;
+
         }
     }
 }
