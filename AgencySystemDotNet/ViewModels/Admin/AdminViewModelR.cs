@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AgencySystemDotNet.ViewModels.Admin
 {
-    public class AdminViewModelR
+    public class AdminViewModelR : BaseUserViewModel
     {
         public int Id { get; set; }
 

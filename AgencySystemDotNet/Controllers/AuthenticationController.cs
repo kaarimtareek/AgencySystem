@@ -1,9 +1,13 @@
 ﻿using AgencySystemDotNet.Constants;
+using AgencySystemDotNet.Services;
+using AgencySystemDotNet.ViewModels;
+using AgencySystemDotNet.ViewModels.Admin;
 
 using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
 using PressAgencyApp.Services;
 using PressAgencyApp.ViewModels.Customer;
+using PressAgencyApp.ViewModels.Editor;
 
 using System;
 using System.Web;
@@ -15,11 +19,13 @@ namespace AgencySystemDotNet.Controllers
     {
         private readonly ILoginService loginService;
         private readonly ICustomerService customerService;
+        private readonly IUserFactoryService userFactoryService;
 
-        public AuthenticationController(ILoginService loginService, ICustomerService customerService)
+        public AuthenticationController(ILoginService loginService, ICustomerService customerService,IUserFactoryService userFactoryService)
         {
             this.loginService = loginService;
             this.customerService = customerService;
+            this.userFactoryService = userFactoryService;
         }
 
         // GET: Login
@@ -43,13 +49,8 @@ namespace AgencySystemDotNet.Controllers
                 Response.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.NAME, user.FirstName));
                 Response.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.EMAIL, user.Email));
                 Response.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.ROLE, user.Role));
-                if(user.Role == CONSTANT_USER_ROLES.ADMIN)
-                return RedirectToAction("Posts", "Admin");
-                if (user.Role == CONSTANT_USER_ROLES.EDTIOR)
-                return RedirectToAction("Posts", "Editor");
-                
-                return RedirectToAction("Posts", "Customer");
-
+                var factoryUser = userFactoryService.CreateUser(user);
+                return RouteAfterLogin(factoryUser);
             }
 
             catch (AppException e)
@@ -60,7 +61,25 @@ namespace AgencySystemDotNet.Controllers
             }
 
 
+        private ActionResult RouteAfterLogin(BaseUserViewModel model)
+        {
+            if(model is AdminViewModelR)
+            {
+                return RedirectToAction("Posts", "Admin");
 
+            }
+            if(model is EditorViewModelR)
+            {
+                return RedirectToAction("Posts", "Editor");
+
+            }
+            if(model is CustomerViewModelR)
+            {
+                return RedirectToAction("Posts", "Customer");
+
+            }
+            return HttpNotFound();
+        }
         public ActionResult Register()
         {
             return View();

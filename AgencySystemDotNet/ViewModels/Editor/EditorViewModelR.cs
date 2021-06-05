@@ -1,10 +1,12 @@
-﻿using PressAgencyApp.ViewModels.Post;
+﻿using AgencySystemDotNet.ViewModels;
+
+using PressAgencyApp.ViewModels.Post;
 
 using System.Collections.Generic;
 
 namespace PressAgencyApp.ViewModels.Editor
 {
-    public class EditorViewModelR
+    public class EditorViewModelR : BaseUserViewModel
     {
         public int Id { get; set; }
 
@@ -15,7 +17,7 @@ namespace PressAgencyApp.ViewModels.Editor
         public string LastName { get; set; }
 
         public string Phonenumber { get; set; }
-       
+
 
         public string Photo { get; set; }
 

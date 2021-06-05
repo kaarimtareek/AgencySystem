@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using AgencySystemDotNet.Services;
+
+using AutoMapper;
 
 using PressAgencyApp.Models;
 using PressAgencyApp.Services;
@@ -25,6 +27,7 @@ namespace AgencySystemDotNet.App_Start
             Container.RegisterType<ICustomerService, CustomerService>();
             Container.RegisterType<IEditorService, EditorService>();
             Container.RegisterType<IEditorService, EditorService>();
+            Container.RegisterType<IUserFactoryService, UserFactoryService>();
             MapperConfiguration config = AutoMapperConfig.Configure(); ;
 
             //build the mapper

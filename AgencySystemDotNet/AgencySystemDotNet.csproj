@@ -247,9 +247,12 @@
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IEditorService.cs" />
     <Compile Include="Services\ILoginService.cs" />
+    <Compile Include="Services\IUserFactoryService.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\UserFactoryService.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModelR.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModelU.cs" />
+    <Compile Include="ViewModels\BaseUserViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Customer\CustomerViewModelC.cs" />
     <Compile Include="ViewModels\Customer\CustomerViewModelR.cs" />

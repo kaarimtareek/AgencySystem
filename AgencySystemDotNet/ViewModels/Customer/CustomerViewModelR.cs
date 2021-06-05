@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgencySystemDotNet.ViewModels;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PressAgencyApp.ViewModels.Customer
 {
-    public class CustomerViewModelR
+    public class CustomerViewModelR : BaseUserViewModel
     {
         public int Id { get; set; }
         [MaxLength(50)]
