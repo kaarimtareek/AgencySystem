@@ -1,20 +1,17 @@
-﻿using AgencySystemDotNet.ViewModels.Editor;
+﻿using AgencySystemDotNet.Services;
+using AgencySystemDotNet.ViewModels.Editor;
 using AgencySystemDotNet.ViewModels.PostQuestion;
 
 using AutoMapper;
 
 using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
-using PressAgencyApp.Services;
 using PressAgencyApp.ViewModels;
 using PressAgencyApp.ViewModels.Post;
 using PressAgencyApp.ViewModels.PostQuestion;
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AgencySystemDotNet.Controllers
@@ -25,22 +22,24 @@ namespace AgencySystemDotNet.Controllers
         private readonly IEditorService editorService;
         private readonly IMapper mapper;
 
-        public EditorController(ILoginService loginService,IEditorService editorService,IMapper mapper)
+        public EditorController(ILoginService loginService, IEditorService editorService, IMapper mapper)
         {
             this.loginService = loginService;
             this.editorService = editorService;
             this.mapper = mapper;
         }
+
         // GET: Editor
         public ActionResult Posts()
         {
             if (!Authorize())
                 return new HttpUnauthorizedResult();
-           var posts= editorService.GetEditorPosts(GetEditorId());
+            var posts = editorService.GetEditorPosts(GetEditorId());
             var result = mapper.Map<List<PostViewModelR>>(posts);
 
             return View(result);
         }
+
         public ActionResult Post(int id)
         {
             try
@@ -51,11 +50,12 @@ namespace AgencySystemDotNet.Controllers
                 var result = mapper.Map<PostViewModelR>(post);
                 return View(result);
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         [HttpPost]
         public ActionResult CreatePost(PostViewModelC viewModelC)
         {
@@ -68,25 +68,27 @@ namespace AgencySystemDotNet.Controllers
                 var result = mapper.Map<PostViewModelR>(post);
                 return RedirectToAction("Posts");
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         public ActionResult CreatePost()
         {
             try
             {
                 if (!Authorize())
                     return new HttpUnauthorizedResult();
-                
+
                 return View(new PostViewModelC());
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         [HttpPost]
         public ActionResult EditPost(PostViewModelU viewModelU)
         {
@@ -98,11 +100,12 @@ namespace AgencySystemDotNet.Controllers
                 var result = mapper.Map<PostViewModelR>(post);
                 return RedirectToAction("Posts");
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         [HttpPost]
         public ActionResult DeletePost(int id)
         {
@@ -114,11 +117,12 @@ namespace AgencySystemDotNet.Controllers
                 //var result = mapper.Map<PostViewModelR>(post);
                 return RedirectToAction("Posts");
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         public ActionResult EditPost(int id)
         {
             try
@@ -129,11 +133,12 @@ namespace AgencySystemDotNet.Controllers
                 var result = mapper.Map<PostViewModelU>(post);
                 return View(result);
             }
-            catch(AppException e)
+            catch (AppException e)
             {
                 return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         public ActionResult ChangePassword()
         {
             if (!Authorize())
@@ -152,9 +157,10 @@ namespace AgencySystemDotNet.Controllers
             var result = loginService.ChangePassword(viewModel);
             return RedirectToAction("EditorProfile");
         }
+
         public ActionResult EditProfile()
         {
-            if(!Authorize())
+            if (!Authorize())
                 return new HttpUnauthorizedResult();
 
             int customerId = GetEditorId();
@@ -162,6 +168,7 @@ namespace AgencySystemDotNet.Controllers
             var result = mapper.Map<EditorViewModelU>(posts);
             return View(result);
         }
+
         [HttpPost]
         public ActionResult EditProfile(EditorViewModelU viewModelU)
         {
@@ -177,6 +184,7 @@ namespace AgencySystemDotNet.Controllers
             var result = mapper.Map<EditorViewModelU>(posts);
             return RedirectToAction("EditorProfile");
         }
+
         public ActionResult AnswerQuestion(int id)
         {
             if (!Authorize())
@@ -187,6 +195,7 @@ namespace AgencySystemDotNet.Controllers
             var result = mapper.Map<PostQuestionViewModelU>(question);
             return View(result);
         }
+
         [HttpPost]
         public ActionResult AnswerQuestion(PostQuestionViewModelU viewModelU)
         {
@@ -194,19 +203,20 @@ namespace AgencySystemDotNet.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-            var question = editorService.AnswerQuestion(viewModelU.Id,viewModelU.Answer);
+            var question = editorService.AnswerQuestion(viewModelU.Id, viewModelU.Answer);
             var result = mapper.Map<PostQuestionViewModelR>(question);
-            return RedirectToAction("Post",new { id = result.PostId});
+            return RedirectToAction("Post", new { id = result.PostId });
         }
+
         private bool Authorize()
         {
-
             var id = Request.Cookies.Get(Constants.CONSTANT_COOKIES_NAMES.ID);
             if (id == null)
                 return false;
             var isAdmin = loginService.IsUserEditor(int.Parse(id.Value));
             return isAdmin;
         }
+
         private int GetEditorId()
         {
             var id = Request.Cookies.Get(Constants.CONSTANT_COOKIES_NAMES.ID);

@@ -1,7 +1,7 @@
 ﻿using PressAgencyApp.Models;
 using PressAgencyApp.ViewModels;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public interface ILoginService
     {

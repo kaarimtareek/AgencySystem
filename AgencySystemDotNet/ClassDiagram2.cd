@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AgencySystemDotNet.BundleConfig">
+    <Position X="21" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.FilterConfig">
+    <Position X="24.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.RouteConfig">
+    <Position X="22.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.UnityMvcActivator">
+    <Position X="24.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\UnityMvcActivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.AutoMapperConfig">
+    <Position X="21" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AutoMapperConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.MvcApplication">
+    <Position X="21" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.App_Start.UnityConfig">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\UnityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Constants.CONSTANT_COOKIES_NAMES">
+    <Position X="26.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAABAAAEA=</HashCode>
+      <FileName>Constants\CONSTANT_COOKIES_NAMES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Constants.CONSTANT_INTERACTION_TYPE">
+    <Position X="27.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Constants\CONSTANT_INTERACTION_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Constants.CONSTANT_POST_STATUS">
+    <Position X="25.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Constants\CONSTANT_POST_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Constants.CONSTANT_USER_ROLES">
+    <Position X="23" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constants\CONSTANT_USER_ROLES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Controllers.AdminController">
+    <Position X="29.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQAAQBkAIgoAARAABAABASAAAAAAAAQBgAgAAAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Controllers.AuthenticationController">
+    <Position X="32.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAwAAAAAAAAAAAAAAAABAAAAAAAwAAAAAAA=</HashCode>
+      <FileName>Controllers\AuthenticationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Controllers.CustomerController">
+    <Position X="31.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAkAIgAAABAAEAAAADAABAAAQQQAgAgAAAAA=</HashCode>
+      <FileName>Controllers\CustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Controllers.EditorController">
+    <Position X="33.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAkAIgABABAAAACEACIAAAAAAAAAgIgAAAAA=</HashCode>
+      <FileName>Controllers\EditorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Controllers.HomeController">
+    <Position X="30.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAABAAACAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Helpers.AppException">
+    <Position X="29" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\AppException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.AppDbContext">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAAAAAAAEQABAAAAAAIFhABAECAAAAACAAAAgE=</HashCode>
+      <FileName>Models\AppDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.BaseEntity">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.LookupPostCategory">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAEAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LookupPostCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.LookupPostStatus">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LookupPostStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.Post">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAMAAAAAmAAQAAJAAAAABgAAAAEAAAQAAIACAA=</HashCode>
+      <FileName>Models\Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.PostInteraction">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAgAAEAAAAAAAAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PostInteraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.PostQuestion">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAEAAAAAAAAACAAAABAEAABAAgAAAAA=</HashCode>
+      <FileName>Models\PostQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.PostView">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAEAAAAAAAAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PostView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.SavedPost">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAEAAAAAAAAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SavedPost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.Models.User">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADiAEAAACAAACAAFAAAQgAAAAAAAACAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.Services.AdminService" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCABIQAAQEgQAQBACJAAgAAAAAEAAAIEQQBgABgAA=</HashCode>
+      <FileName>Services\AdminService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.728" Collapsed="true" />
+  </Class>
+  <Class Name="AgencySystemDotNet.Services.CustomerService" BaseTypeListCollapsed="true">
+    <Position X="21" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAIQAQQAgAAAAACIRAgAAAABFAAEAEQSBgABgCA=</HashCode>
+      <FileName>Services\CustomerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.669" Collapsed="true" />
+  </Class>
+  <Class Name="AgencySystemDotNet.Services.EditorService" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAIAAAQIgAAQAIAIAAhAAIAAEAAEIAQQJgAAkAA=</HashCode>
+      <FileName>Services\EditorService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AgencySystemDotNet.Services.LoginService" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAIAAAAAgAAAAAAIAAAAEAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\LoginService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AgencySystemDotNet.Services.UserFactoryService" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="8.25" Width="1.75" />
+    <Members>
+      <Field Name="mapper" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserFactoryService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AgencySystemDotNet.ViewModels.Admin.AdminViewModelR">
+    <Position X="2.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Admin\AdminViewModelR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.ViewModels.Admin.AdminViewModelU">
+    <Position X="10.5" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Admin\AdminViewModelU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.ViewModels.BaseUserViewModel">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseUserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.ChangePasswordViewModel">
+    <Position X="7.25" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEBAAAAgAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ChangePasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Customer.CustomerViewModelC">
+    <Position X="12.5" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAACAAAAAAQAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Customer\CustomerViewModelC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Customer.CustomerViewModelR">
+    <Position X="0.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAEAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Customer\CustomerViewModelR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Customer.CustomerViewModelU">
+    <Position X="10.5" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Customer\CustomerViewModelU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Editor.EditorViewModelC">
+    <Position X="8" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAACAAAAAAQAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Editor\EditorViewModelC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Editor.EditorViewModelR">
+    <Position X="5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAFAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Editor\EditorViewModelR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.ViewModels.Editor.EditorViewModelU">
+    <Position X="7.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\Editor\EditorViewModelU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Post.PostViewModelC">
+    <Position X="16.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAmAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Post\PostViewModelC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Post.PostViewModelR">
+    <Position X="14.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAmAAACABAAAEADgAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>ViewModels\Post\PostViewModelR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.Post.PostViewModelU">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAmAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Post\PostViewModelU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.PostQuestion.PostQuestionViewModelC">
+    <Position X="10.5" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAABAEAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PostQuestion\PostQuestionViewModelC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PressAgencyApp.ViewModels.PostQuestion.PostQuestionViewModelR">
+    <Position X="15.5" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEAAAAAAAAEQAAAABAEAABAAgAAAAA=</HashCode>
+      <FileName>ViewModels\PostQuestion\PostQuestionViewModelR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgencySystemDotNet.ViewModels.PostQuestion.PostQuestionViewModelU">
+    <Position X="13" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>ViewModels\PostQuestion\PostQuestionViewModelU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AgencySystemDotNet.Services.IAdminService">
+    <Position X="19.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAQAAAEgQAQBACBAAAAAAAAEAAAIEQQAgABAAA=</HashCode>
+      <FileName>Services\IAdminService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AgencySystemDotNet.Services.ICustomerService">
+    <Position X="21" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAQAAgAAAAACABAAAAAABFAAAAEQSAgABAAA=</HashCode>
+      <FileName>Services\ICustomerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AgencySystemDotNet.Services.IEditorService">
+    <Position X="22.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIgAAQAIAAAABAAIAAEAAAIAQQIgAAEAA=</HashCode>
+      <FileName>Services\IEditorService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AgencySystemDotNet.Services.ILoginService">
+    <Position X="24.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\ILoginService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AgencySystemDotNet.Services.IUserFactoryService">
+    <Position X="26.25" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IUserFactoryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoMapper.IMapper" Collapsed="true">
+    <Position X="27.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

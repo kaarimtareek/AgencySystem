@@ -16,7 +16,7 @@ using System.Net;
 using System.Web;
 using System.Web.Hosting;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public class AdminService : IAdminService
     {

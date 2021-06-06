@@ -2,13 +2,6 @@
 
 using AutoMapper;
 
-using PressAgencyApp.Models;
-using PressAgencyApp.Services;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 using Unity;
@@ -19,6 +12,7 @@ namespace AgencySystemDotNet.App_Start
     public class UnityConfig
     {
         public static UnityContainer Container = new UnityContainer();
+
         public static void RegisterComponents()
         {
             //var container = new UnityContainer();
@@ -26,9 +20,8 @@ namespace AgencySystemDotNet.App_Start
             Container.RegisterType<ILoginService, LoginService>();
             Container.RegisterType<ICustomerService, CustomerService>();
             Container.RegisterType<IEditorService, EditorService>();
-            Container.RegisterType<IEditorService, EditorService>();
             Container.RegisterType<IUserFactoryService, UserFactoryService>();
-            MapperConfiguration config = AutoMapperConfig.Configure(); ;
+            MapperConfiguration config = AutoMapperConfig.Configure(); 
 
             //build the mapper
             IMapper mapper = config.CreateMapper();

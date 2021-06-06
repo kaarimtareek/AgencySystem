@@ -3,13 +3,10 @@ using AgencySystemDotNet.Services;
 using AgencySystemDotNet.ViewModels;
 using AgencySystemDotNet.ViewModels.Admin;
 
-using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
-using PressAgencyApp.Services;
 using PressAgencyApp.ViewModels.Customer;
 using PressAgencyApp.ViewModels.Editor;
 
-using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,7 +18,7 @@ namespace AgencySystemDotNet.Controllers
         private readonly ICustomerService customerService;
         private readonly IUserFactoryService userFactoryService;
 
-        public AuthenticationController(ILoginService loginService, ICustomerService customerService,IUserFactoryService userFactoryService)
+        public AuthenticationController(ILoginService loginService, ICustomerService customerService, IUserFactoryService userFactoryService)
         {
             this.loginService = loginService;
             this.customerService = customerService;
@@ -34,6 +31,7 @@ namespace AgencySystemDotNet.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
@@ -52,34 +50,30 @@ namespace AgencySystemDotNet.Controllers
                 var factoryUser = userFactoryService.CreateUser(user);
                 return RouteAfterLogin(factoryUser);
             }
-
             catch (AppException e)
             {
                 ViewBag.ErrorMessage = e.Message;
                 return View();
             }
-            }
-
+        }
 
         private ActionResult RouteAfterLogin(BaseUserViewModel model)
         {
-            if(model is AdminViewModelR)
+            if (model is AdminViewModelR)
             {
                 return RedirectToAction("Posts", "Admin");
-
             }
-            if(model is EditorViewModelR)
+            if (model is EditorViewModelR)
             {
                 return RedirectToAction("Posts", "Editor");
-
             }
-            if(model is CustomerViewModelR)
+            if (model is CustomerViewModelR)
             {
                 return RedirectToAction("Posts", "Customer");
-
             }
             return HttpNotFound();
         }
+
         public ActionResult Register()
         {
             return View();

@@ -19,4 +19,5 @@ namespace AgencySystemDotNet.ViewModels.Admin
 
         public HttpPostedFileBase Photo { get; set; }
     }
+
 }

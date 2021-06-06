@@ -19,4 +19,6 @@ namespace AgencySystemDotNet.ViewModels.Admin
 
         public string Photo { get; set; }
     }
+
+    
 }

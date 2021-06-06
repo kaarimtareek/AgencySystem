@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public class LoginService : ILoginService
     {

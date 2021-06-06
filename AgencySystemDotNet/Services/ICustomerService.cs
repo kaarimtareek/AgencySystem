@@ -5,7 +5,7 @@ using PressAgencyApp.ViewModels.PostQuestion;
 
 using System.Collections.Generic;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public interface ICustomerService
     {

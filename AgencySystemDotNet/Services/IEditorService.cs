@@ -6,7 +6,7 @@ using PressAgencyApp.ViewModels.Post;
 
 using System.Collections.Generic;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public interface IEditorService
     {

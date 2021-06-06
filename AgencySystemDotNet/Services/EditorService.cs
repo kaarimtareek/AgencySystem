@@ -13,7 +13,7 @@ using System.Web.Hosting;
 using AgencySystemDotNet.ViewModels.Editor;
 using PressAgencyApp.ViewModels;
 
-namespace PressAgencyApp.Services
+namespace AgencySystemDotNet.Services
 {
     public class EditorService : IEditorService
     {

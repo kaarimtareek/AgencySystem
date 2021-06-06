@@ -1,8 +1,9 @@
-﻿using AutoMapper;
+﻿using AgencySystemDotNet.Services;
+
+using AutoMapper;
 
 using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
-using PressAgencyApp.Services;
 using PressAgencyApp.ViewModels;
 using PressAgencyApp.ViewModels.Customer;
 using PressAgencyApp.ViewModels.Post;

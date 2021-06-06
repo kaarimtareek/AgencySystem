@@ -1,19 +1,16 @@
-﻿using AgencySystemDotNet.ViewModels.Admin;
+﻿using AgencySystemDotNet.Services;
+using AgencySystemDotNet.ViewModels.Admin;
 
 using AutoMapper;
 
 using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
-using PressAgencyApp.Services;
 using PressAgencyApp.ViewModels;
 using PressAgencyApp.ViewModels.Customer;
 using PressAgencyApp.ViewModels.Editor;
 using PressAgencyApp.ViewModels.Post;
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AgencySystemDotNet.Controllers
@@ -31,7 +28,7 @@ namespace AgencySystemDotNet.Controllers
             this.adminService = adminService;
             this.mapper = mapper;
         }
-       
+
         public ActionResult AdminProfile()
         {
             if (!Authorize())
@@ -41,8 +38,9 @@ namespace AgencySystemDotNet.Controllers
             var result = mapper.Map<AdminViewModelR>(posts);
             return View(result);
         }
+
         [Route("admin/posts/{status?}")]
-        public ActionResult Posts(string status )
+        public ActionResult Posts(string status)
         {
             if (!Authorize())
                 return new HttpUnauthorizedResult();
@@ -51,7 +49,6 @@ namespace AgencySystemDotNet.Controllers
             return View(result);
         }
 
-        
         public ActionResult Post(int id)
         {
             try
@@ -68,6 +65,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         [Route("admin/Approvepost/{id}")]
         public ActionResult ApprovePost(int id)
         {
@@ -75,7 +73,7 @@ namespace AgencySystemDotNet.Controllers
             {
                 if (!Authorize())
                     return new HttpUnauthorizedResult();
-                var posts = adminService.ChangePostStatus(id,CONSTANT_POST_STATUS.APPROVED);
+                var posts = adminService.ChangePostStatus(id, CONSTANT_POST_STATUS.APPROVED);
                 //var result = mapper.Map<PostViewModelR>(posts);
                 return RedirectToAction("posts");
             }
@@ -85,7 +83,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
-  
+
         public ActionResult DeletePost(int id)
         {
             try
@@ -99,9 +97,10 @@ namespace AgencySystemDotNet.Controllers
             catch (AppException e)
             {
                 ViewBag.ErrorMessage = e.Message;
-                return new HttpStatusCodeResult(e.StatusCode,e.Message);
+                return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         [Route("admin/RejectPost/{id}")]
         public ActionResult RejectPost(int id)
         {
@@ -109,7 +108,7 @@ namespace AgencySystemDotNet.Controllers
             {
                 if (!Authorize())
                     return new HttpUnauthorizedResult();
-                var posts = adminService.ChangePostStatus(id,CONSTANT_POST_STATUS.REJECTED);
+                var posts = adminService.ChangePostStatus(id, CONSTANT_POST_STATUS.REJECTED);
                 //var result = mapper.Map<PostViewModelR>(posts);
                 return RedirectToAction("posts");
             }
@@ -119,6 +118,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult EditorPosts(int id)
         {
             try
@@ -135,6 +135,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult Editor(int id)
         {
             try
@@ -151,6 +152,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult DeleteEditor(int id)
         {
             try
@@ -167,7 +169,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
-        
+
         public ActionResult Editors()
         {
             try
@@ -184,6 +186,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult Customers()
         {
             try
@@ -200,6 +203,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult Customer(int id)
         {
             try
@@ -216,6 +220,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult EditCustomer(int id)
         {
             try
@@ -232,7 +237,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
-        
+
         public ActionResult CreateCustomer()
         {
             try
@@ -245,7 +250,7 @@ namespace AgencySystemDotNet.Controllers
             catch (AppException e)
             {
                 ViewBag.ErrorMessage = e.Message;
-                return new HttpStatusCodeResult(e.StatusCode,e.Message);
+                return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
 
@@ -263,9 +268,10 @@ namespace AgencySystemDotNet.Controllers
             catch (AppException e)
             {
                 ViewBag.ErrorMessage = e.Message;
-                return new HttpStatusCodeResult(e.StatusCode,e.Message);
+                return new HttpStatusCodeResult(e.StatusCode, e.Message);
             }
         }
+
         public ActionResult DeletCustomer(int id)
         {
             try
@@ -282,6 +288,7 @@ namespace AgencySystemDotNet.Controllers
                 return new HttpNotFoundResult();
             }
         }
+
         public ActionResult ChangePassword()
         {
             if (!Authorize())
@@ -300,16 +307,18 @@ namespace AgencySystemDotNet.Controllers
             var result = loginService.ChangePassword(viewModel);
             return RedirectToAction("AdminProfile");
         }
+
         public ActionResult EditProfile()
         {
             if (!Authorize())
                 return new HttpUnauthorizedResult();
             int customerId = GetAdminId();
-           
+
             var posts = adminService.GetAdmin(customerId);
             var result = mapper.Map<AdminViewModelU>(posts);
             return View(result);
         }
+
         [HttpPost]
         public ActionResult EditProfile(AdminViewModelU viewModelU)
         {
@@ -324,21 +333,19 @@ namespace AgencySystemDotNet.Controllers
 
         private bool Authorize()
         {
-
             var id = Request.Cookies.Get(Constants.CONSTANT_COOKIES_NAMES.ID);
             if (id == null)
                 return false;
             var isAdmin = loginService.IsUserAdmin(int.Parse(id.Value));
             return isAdmin;
         }
+
         private int GetAdminId()
         {
-
             var id = Request.Cookies.Get(Constants.CONSTANT_COOKIES_NAMES.ID);
             if (id == null)
                 return 0;
             return int.Parse(id.Value);
         }
-
     }
 }
