@@ -7,6 +7,7 @@ using PressAgencyApp.Helpers;
 using PressAgencyApp.ViewModels.Customer;
 using PressAgencyApp.ViewModels.Editor;
 
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -74,34 +75,15 @@ namespace AgencySystemDotNet.Controllers
             return HttpNotFound();
         }
 
-        public ActionResult Register()
+       
+        public ActionResult Logout()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register([Bind] CustomerViewModelC viewModelC)
-        {
-            try
+            string[] myCookies = Request.Cookies.AllKeys;
+            foreach (string cookie in myCookies)
             {
-                var user = customerService.CreateCustomer(viewModelC);
-                if (user == null)
-                {
-                    ViewBag.ErrorMessage = "Email or password are incorrect";
-                    return View();
-                }
-                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.ID, user.Id.ToString()));
-                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.NAME, user.FirstName));
-                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.EMAIL, user.Email));
-                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.ROLE, user.Role));
-
-                return RedirectToAction("Index", "HomeController");
+                Response.Cookies[cookie].Expires = DateTime.Now.AddDays(-1);
             }
-            catch (AppException e)
-            {
-                ViewBag.ErrorMessage = e.Message;
-                return View();
-            }
+            return RedirectToAction("Posts","Customer");
         }
     }
 }

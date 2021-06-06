@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Editors";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+
 }
 
 <h2>Editors</h2>
@@ -46,9 +48,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Phonenumber)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
+        <dd>
+            <img src="~/images/@item.Photo" width="50px" height="50px" />
+        </dd>
         <td>
             @Html.DisplayFor(modelItem => item.Role)
         </td>

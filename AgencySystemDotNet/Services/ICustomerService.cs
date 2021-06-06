@@ -25,7 +25,7 @@ namespace AgencySystemDotNet.Services
         User UpdateCustomer(CustomerViewModelU customerViewModelU);
         int SavePost(int customerId, int postId);
         List<Post> GetSavedPosts(int customerId);
-        List<Post> GetSavedPosts(string searchValue);
+        List<Post> SearchPosts(string searchValue);
     }
 
 }

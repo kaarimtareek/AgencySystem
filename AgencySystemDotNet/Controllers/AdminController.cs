@@ -32,18 +32,18 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult AdminProfile()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int adminId = GetAdminId();
             var posts = adminService.GetAdmin(adminId);
             var result = mapper.Map<AdminViewModelR>(posts);
             return View(result);
         }
 
-        [Route("admin/posts/{status?}")]
+       // [Route("admin/posts/{status?}")]
         public ActionResult Posts(string status)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             var posts = adminService.GetPosts(status);
             var result = mapper.Map<List<PostViewModelR>>(posts);
             return View(result);
@@ -54,7 +54,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetPostById(id);
                 var result = mapper.Map<PostViewModelR>(posts);
                 return View(result);
@@ -72,7 +72,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.ChangePostStatus(id, CONSTANT_POST_STATUS.APPROVED);
                 //var result = mapper.Map<PostViewModelR>(posts);
                 return RedirectToAction("posts");
@@ -89,7 +89,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.DeletePost(id);
                 //var result = mapper.Map<PostViewModelR>(posts);
                 return RedirectToAction("posts");
@@ -107,7 +107,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.ChangePostStatus(id, CONSTANT_POST_STATUS.REJECTED);
                 //var result = mapper.Map<PostViewModelR>(posts);
                 return RedirectToAction("posts");
@@ -124,7 +124,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetEditorPosts(id);
                 var result = mapper.Map<List<PostViewModelR>>(posts);
                 return View(result);
@@ -141,7 +141,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetEditor(id);
                 var result = mapper.Map<EditorViewModelR>(posts);
                 return View(result);
@@ -158,7 +158,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.DeleteEditor(id);
                 //var result = mapper.Map<EditorViewModelR>(posts);
                 return RedirectToAction("Editors");
@@ -175,7 +175,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetEditors();
                 var result = mapper.Map<List<EditorViewModelR>>(posts);
                 return View(result);
@@ -192,7 +192,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetCustomers();
                 var result = mapper.Map<List<CustomerViewModelR>>(posts);
                 return View(result);
@@ -209,7 +209,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetCustomer(id);
                 var result = mapper.Map<CustomerViewModelR>(posts);
                 return View(result);
@@ -226,7 +226,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.GetCustomer(id);
                 var result = mapper.Map<CustomerViewModelR>(posts);
                 return View(result);
@@ -243,7 +243,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
 
                 return View(new CustomerViewModelC());
             }
@@ -260,7 +260,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.CreateCustomer(viewModelU);
                 var result = mapper.Map<CustomerViewModelR>(posts);
                 return RedirectToAction("Customers");
@@ -277,7 +277,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var posts = adminService.DeleteCustomer(id);
                 //var result = mapper.Map<CustomerViewModelR>(posts);
                 return RedirectToAction("Customers");
@@ -292,7 +292,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetAdminId();
             return View(new ChangePasswordViewModel(customerId));
         }
@@ -301,7 +301,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword(ChangePasswordViewModel viewModel)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetAdminId();
             viewModel.Role = CONSTANT_USER_ROLES.ADMIN;
             var result = loginService.ChangePassword(viewModel);
@@ -311,7 +311,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult EditProfile()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetAdminId();
 
             var posts = adminService.GetAdmin(customerId);
@@ -323,7 +323,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult EditProfile(AdminViewModelU viewModelU)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetAdminId();
             viewModelU.Id = customerId;
             var posts = adminService.UpdateAdmin(viewModelU);

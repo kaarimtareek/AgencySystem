@@ -7,6 +7,7 @@ using AutoMapper;
 using PressAgencyApp.Constants;
 using PressAgencyApp.Helpers;
 using PressAgencyApp.ViewModels;
+using PressAgencyApp.ViewModels.Editor;
 using PressAgencyApp.ViewModels.Post;
 using PressAgencyApp.ViewModels.PostQuestion;
 
@@ -33,7 +34,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult Posts()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             var posts = editorService.GetEditorPosts(GetEditorId());
             var result = mapper.Map<List<PostViewModelR>>(posts);
 
@@ -45,7 +46,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var post = editorService.GetPostById(id);
                 var result = mapper.Map<PostViewModelR>(post);
                 return View(result);
@@ -62,7 +63,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 viewModelC.EditorId = GetEditorId();
                 var post = editorService.CreatePost(viewModelC);
                 var result = mapper.Map<PostViewModelR>(post);
@@ -79,7 +80,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
 
                 return View(new PostViewModelC());
             }
@@ -95,7 +96,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var post = editorService.UpdatePost(viewModelU);
                 var result = mapper.Map<PostViewModelR>(post);
                 return RedirectToAction("Posts");
@@ -112,7 +113,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var post = editorService.DeletePost(id);
                 //var result = mapper.Map<PostViewModelR>(post);
                 return RedirectToAction("Posts");
@@ -128,7 +129,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 var post = editorService.GetPostById(id);
                 var result = mapper.Map<PostViewModelU>(post);
                 return View(result);
@@ -142,7 +143,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetEditorId();
             return View(new ChangePasswordViewModel(customerId));
         }
@@ -151,7 +152,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword(ChangePasswordViewModel viewModel)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetEditorId();
             viewModel.Role = CONSTANT_USER_ROLES.EDTIOR;
             var result = loginService.ChangePassword(viewModel);
@@ -174,7 +175,7 @@ namespace AgencySystemDotNet.Controllers
         {
             if (!Authorize())
             {
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             }
             int customerId = GetEditorId();
             if (customerId == 0)
@@ -189,19 +190,27 @@ namespace AgencySystemDotNet.Controllers
         {
             if (!Authorize())
             {
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             }
             var question = editorService.GetPostQuestion(id);
             var result = mapper.Map<PostQuestionViewModelU>(question);
             return View(result);
         }
-
+        public ActionResult EditorProfile()
+        {
+            if (!Authorize())
+                return RedirectToAction("Posts", "Customer");
+            int adminId = GetEditorId();
+            var posts = editorService.GetEditor(adminId);
+            var result = mapper.Map<EditorViewModelR>(posts);
+            return View(result);
+        }
         [HttpPost]
         public ActionResult AnswerQuestion(PostQuestionViewModelU viewModelU)
         {
             if (!Authorize())
             {
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             }
             var question = editorService.AnswerQuestion(viewModelU.Id, viewModelU.Answer);
             var result = mapper.Map<PostQuestionViewModelR>(question);

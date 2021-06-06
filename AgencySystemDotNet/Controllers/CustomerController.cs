@@ -1,4 +1,5 @@
-﻿using AgencySystemDotNet.Services;
+﻿using AgencySystemDotNet.Constants;
+using AgencySystemDotNet.Services;
 
 using AutoMapper;
 
@@ -11,6 +12,7 @@ using PressAgencyApp.ViewModels.PostQuestion;
 
 using System.Collections.Generic;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 namespace AgencySystemDotNet.Controllers
@@ -29,19 +31,26 @@ namespace AgencySystemDotNet.Controllers
         }
 
         // GET: Customer
-        [Route("Customer/Posts/{categoryId?}")]
+        //[Route("Customer/Posts/{categoryId?}")]
         public ActionResult Posts(int? categoryId)
         {
             var posts = customerService.GetPosts(categoryId);
             var result = mapper.Map<List<PostViewModelR>>(posts);
             return View(result);
         }
+        [HttpPost]
+        public ActionResult SearchPosts(string searchValue)
+        {
+            var posts = customerService.SearchPosts(searchValue);
+            var result = mapper.Map<List<PostViewModelR>>(posts);
+            return View("Posts",result);
+        }
 
         public ActionResult CustomerProfile()
         {
             int customerId = GetCustomerId();
             if (customerId == 0)
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Logined");
+                return RedirectToAction("Posts", "Customer");
             var posts = customerService.GetCustomer(customerId);
             var result = mapper.Map<CustomerViewModelR>(posts);
             return View(result);
@@ -62,11 +71,37 @@ namespace AgencySystemDotNet.Controllers
         {
             int customerId = GetCustomerId();
             if (customerId == 0)
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Logined");
+                return RedirectToAction("Posts", "Customer");
             viewModelU.Id = customerId;
             var posts = customerService.UpdateCustomer(viewModelU);
             var result = mapper.Map<CustomerViewModelU>(posts);
             return RedirectToAction("CustomerProfile");
+        }
+        
+
+  
+        public ActionResult Register( CustomerViewModelC viewModelC)
+        {
+            try
+            {
+                var user = customerService.CreateCustomer(viewModelC);
+                if (user == null)
+                {
+                    ViewBag.ErrorMessage = "Email or password are incorrect";
+                    return RedirectToAction("Posts");
+                }
+                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.ID, user.Id.ToString()));
+                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.NAME, user.FirstName));
+                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.EMAIL, user.Email));
+                Request.Cookies.Add(new HttpCookie(CONSTANT_COOKIES_NAMES.ROLE, user.Role));
+
+                return RedirectToAction("Posts", "Customer");
+            }
+            catch (AppException e)
+            {
+                ViewBag.ErrorMessage = e.Message;
+                return RedirectToAction("Posts", "Customer");
+            }
         }
 
         public ActionResult Post(int id)
@@ -83,7 +118,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 int customerId = GetCustomerId();
                 var post = customerService.LikePost(customerId, id);
                 return RedirectToAction("Post", new { id = post });
@@ -99,7 +134,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 int customerId = GetCustomerId();
                 var post = customerService.GetPost(id);
                 var postQuestionVm = new PostQuestionViewModelC
@@ -121,7 +156,7 @@ namespace AgencySystemDotNet.Controllers
             try
             {
                 if (!Authorize())
-                    return new HttpUnauthorizedResult();
+                    return RedirectToAction("Posts", "Customer");
                 postQuestionViewModelC.CustomerId = GetCustomerId();
                 var post = customerService.CreateQuestion(postQuestionViewModelC);
                 return RedirectToAction("Post", new { id = post.PostId });
@@ -136,7 +171,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult DislikePost(int id)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetCustomerId();
             var post = customerService.DisLikePost(customerId, id);
             return RedirectToAction("Post", new { id = post });
@@ -145,7 +180,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetCustomerId();
             return View(new ChangePasswordViewModel(customerId));
         }
@@ -154,18 +189,18 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult ChangePassword(ChangePasswordViewModel viewModel)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetCustomerId();
             viewModel.Role = CONSTANT_USER_ROLES.CUSTOMER;
             var result = loginService.ChangePassword(viewModel);
             return RedirectToAction("Profile");
         }
 
-        [HttpPost]
+      //  [HttpPost]
         public ActionResult SavePost(int id)
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetCustomerId();
             var result = customerService.SavePost(customerId, id);
             return RedirectToAction("Posts");
@@ -174,7 +209,7 @@ namespace AgencySystemDotNet.Controllers
         public ActionResult SavedPosts()
         {
             if (!Authorize())
-                return new HttpUnauthorizedResult();
+                return RedirectToAction("Posts", "Customer");
             int customerId = GetCustomerId();
             var result = customerService.GetSavedPosts(customerId);
             var posts = mapper.Map<List<PostViewModelR>>(result);

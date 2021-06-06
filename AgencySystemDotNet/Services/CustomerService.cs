@@ -57,7 +57,7 @@ namespace AgencySystemDotNet.Services
 
         private string UploadImage(HttpPostedFileBase image)
         {
-            string uniqueFileName = null;
+            string uniqueFileName = "";
 
             if (image != null)
             {
@@ -371,7 +371,7 @@ namespace AgencySystemDotNet.Services
             return posts;
 
         }
-        public List<Post>GetSavedPosts(string searchValue)
+        public List<Post>SearchPosts(string searchValue)
         {
             var posts = context.Posts.Where(x => !x.IsDeleted  && x.StatusId == CONSTANT_POST_STATUS.APPROVED && (x.Title.Contains(searchValue) || x.Body.Contains(searchValue) ||x.Editor.FirstName.Contains(searchValue) || x.Editor.LastName.Contains(searchValue) || x.Category.Title.Contains(searchValue))).ToList();
             return posts;

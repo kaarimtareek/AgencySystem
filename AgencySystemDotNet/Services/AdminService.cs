@@ -63,7 +63,7 @@ namespace AgencySystemDotNet.Services
 
         private string UploadImage(HttpPostedFileBase image)
         {
-            string uniqueFileName = null;
+            string uniqueFileName = "";
 
             if (image != null)
             {

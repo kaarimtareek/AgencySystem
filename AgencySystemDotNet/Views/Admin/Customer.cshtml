@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+
 }
 
 <h2>Customer</h2>
@@ -42,9 +44,9 @@
             @Html.DisplayFor(model => model.Phonenumber)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
+        <dd>
+            <img src="~/images/@Model.Photo" width="250px" height="250px" />
+        </dd>
 
         <dd>
             @Html.DisplayFor(model => model.Photo)

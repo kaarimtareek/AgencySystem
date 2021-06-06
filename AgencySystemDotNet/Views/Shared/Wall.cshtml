@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wall</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Button used to open the contact form - fixed at the bottom of the page */
+        .open-button {
+            background-color: #white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            opacity: 0.3;
+            width: 140px;
+        }
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+                /* When the inputs get focus, do something */
+                .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #04AA6D;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+                opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: lightblue;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+</footer>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        @if (Request.Cookies["ID"] == null)
+                        {
+                            <li class="nav-item">
+                                <button class="open-button" onclick="openForm()">Register</button>
+                                @using (Html.BeginForm("Register", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div class="form-popup" id="myForm">
+                                        <form action=" " class="form-container">
+                                            <h1>Login</h1>
+
+                                            <label for="Email"><b>Email</b></label>
+                                            <input type="text" placeholder="Enter Email" name="Email" required>
+
+                                            <label for="FirstName"><b>FirstName</b></label>
+                                            <input type="text" placeholder="FirstName" name="FirstName" required>
+
+                                            <label for="LastName"><b>LastName</b></label>
+                                            <input type="text" placeholder="LastName" name="LastName" required>
+
+                                            <label for="Phonenumber"><b>Phone number</b></label>
+                                            <input type="text" placeholder="Phonenumber" name="Phonenumber" required>
+
+                                            <label for="psw"><b>Password</b></label>
+                                            <input type="password" placeholder="Enter Password" name="Password" required>
+
+                                            <label for="Photo"><b>Photo</b></label>
+                                            <div class="col-md-10">
+                                                <input type="file" name="Photo" />
+                                            </div>
+                                            <button type="submit" value="Register" class="btn">Register</button>
+                                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                        </form>
+                                    </div>
+                                }
+                                <script>
+                                    function openForm() {
+                                        document.getElementById("myForm").style.display = "block";
+                                    }
+
+                                    function closeForm() {
+                                        document.getElementById("myForm").style.display = "none";
+                                    }
+                                </script>
+                            </li>
+                            <li class="nav-item">
+                                <button class="open-button" onclick="openForm2()">Login</button>
+                                @using (Html.BeginForm("Login", "Authentication"))
+                                {
+                                    <div class="form-popup" id="myForm2">
+                                        <form action="" class="form-container">
+                                            <h1>Login</h1>
+
+                                            <label for="email"><b>Email</b></label>
+                                            <input type="text" placeholder="Enter Email" name="email" required>
+
+                                            <label for="psw"><b>Password</b></label>
+                                            <input type="password" placeholder="Enter Password" name="password" required>
+
+                                            <button type="submit" class="btn">Login</button>
+                                            <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+                                        </form>
+                                    </div>
+                                }
+                                <script>
+                                    function openForm2() {
+                                        document.getElementById("myForm2").style.display = "block";
+                                    }
+
+                                    function closeForm2() {
+                                        document.getElementById("myForm2").style.display = "none";
+                                    }
+                                </script>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active" style="padding:10px">
+                                @Html.ActionLink("My Profile", "CustomerProfile", "Customer")
+                            </li>
+                        }
+
+                        <li class="nav-item active" style="padding:10px">
+                            @Html.ActionLink("Posts", "Posts", "Customer")
+                        </li>
+                        <li class="nav-item active" style="padding:10px">
+                            @Html.ActionLink("Saved Posts", "SavedPosts", "Customer")
+                        </li>
+                    </ul>
+
+                    @using (Html.BeginForm("SearchPosts", "Customer"))
+                    {
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+                            <button class="btn btn-outline-success" type="submit" value="SearchPosts">Search</button>
+                        </form>
+                    }
+                    @if (Request.Cookies["ID"] != null)
+                    {
+                        @Html.ActionLink("Logout", "Logout", "Authentication")
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer class="container-fluid" align="bottom">
+        <p>&copy;copyright 2021</p>
+    </footer>
+</body>
+</html>
